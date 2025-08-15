@@ -1,0 +1,1 @@
+An intelligent ML-based application that predicts loan eligibility and provides actionable recommendations to improve approval chances. The system analyzes applicant data—such as income, credit score, loan amount, and employment type—using trained machine learning models to deliver fast, accurate, and explainable results.
