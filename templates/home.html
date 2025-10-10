@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LoanAdvisor AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+    .hero-section {
+      padding: 100px 20px;
+      background: url('/static/loan-bg.jpg') center/cover no-repeat;
+      position: relative;
+    }
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .stat {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffc107;
+    }
+    .feature-icon {
+      font-size: 2rem;
+      color: #00c6ff;
+    }
+    .footer {
+      background-color: #1c1c1c;
+      padding: 30px 0;
+      margin-top: 60px;
+    }
+    .footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <div class="hero-section text-center text-white d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-content">
+      <h1 class="display-4 fw-bold">Smart Loans, Smarter Decisions</h1>
+      <p class="lead">India's most trusted AI-powered loan advisor. Get instant eligibility checks, compare rates from 100+ banks, and secure the best loan deals in minutes.</p>
+      <div class="mt-4">
+        <a href="/signup" class="btn btn-warning btn-lg me-3">Check Eligibility Now</a>
+        <a href="/login" class="btn btn-outline-light btn-lg">Learn More</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="container text-center mt-5">
+    <div class="row">
+      <div class="col-md-3">
+        <h2 class="stat">50L+</h2>
+        <p>Loans Approved</p>
+      </div>
+      <div class="col-md-3">
+        <h2 class="stat">100+</h2>
+        <p>Partner Banks</p>
+      </div>
+      <div class="col-md-3">
+        <h2 class="stat">99.9%</h2>
+        <p>Success Rate</p>
+      </div>
+      <div class="col-md-3">
+        <h2 class="stat">4.8/5</h2>
+        <p>User Rating</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="container mt-5">
+    <h3 class="text-center mb-4">Why Choose LoanAdvisor AI?</h3>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="feature-icon mb-2"><i class="fas fa-bolt"></i></div>
+        <h5>Instant Eligibility Check</h5>
+        <p>Get real-time insights based on your financial profile — no waiting, no guesswork.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-icon mb-2"><i class="fas fa-university"></i></div>
+        <h5>Compare Across Banks</h5>
+        <p>Access curated offers from 100+ banks and NBFCs — all in one place.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-icon mb-2"><i class="fas fa-shield-alt"></i></div>
+        <h5>Secure & Transparent</h5>
+        <p>Your data is protected with bank-grade encryption. We never sell your information.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="container mt-5">
+    <h3 class="text-center mb-4">What Our Users Say</h3>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <blockquote>"I got my home loan approved in 48 hours — LoanAdvisor made it effortless!"</blockquote>
+        <p>— Priya R., Hyderabad</p>
+      </div>
+      <div class="col-md-4">
+        <blockquote>"The chatbot guided me step-by-step. I felt confident and informed throughout."</blockquote>
+        <p>— Arjun M., Bengaluru</p>
+      </div>
+      <div class="col-md-4">
+        <blockquote>"Best part? I didn’t have to visit a single branch. Everything was online."</blockquote>
+        <p>— Neha S., Pune</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer text-center">
+    <div class="container">
+      <p>&copy; 2025 LoanAdvisor AI. All rights reserved.</p>
+      <p>
+        <a href="/privacy">Privacy Policy</a> |
+        <a href="/terms">Terms of Service</a> |
+        <a href="/contact">Contact Us</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

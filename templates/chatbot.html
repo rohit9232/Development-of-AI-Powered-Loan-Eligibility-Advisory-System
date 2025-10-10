@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot | LoanAdvisor AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .chatbot-section {
+      min-height: 100vh;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      padding: 60px 20px;
+      color: white;
+    }
+    .chat-window {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+    .message {
+      margin-bottom: 15px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 75%;
+    }
+.message {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 75%;
+  color: black;
+  background-color: #fff176; /* Soft yellow */
+}
+    .chat-input {
+      margin-top: 20px;
+    }
+    /* Smooth scroll and subtle fade-in for new messages */
+.chat-box {
+  scroll-behavior: smooth;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Message bubbles with subtle shadows */
+.message {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+.message:hover {
+  transform: scale(1.02);
+}
+
+/* Bot and user bubble enhancements */
+.bot {
+  background: linear-gradient(to right, #1e2a38, #2c3e50);
+  border-left: 4px solid #ffc107;
+}
+.user {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  border-right: 4px solid #fff;
+}
+
+/* Input field glow on focus */
+.input-area input:focus {
+  box-shadow: 0 0 5px #00c6ff;
+}
+
+/* Button hover animation */
+.input-area button {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.input-area button:hover {
+  transform: scale(1.05);
+}
+  </style>
+</head>
+<body>
+  <div class="chatbot-section d-flex flex-column align-items-center">
+    <div class="text-center mb-4">
+      <img src="/static/logo.png" alt="LoanAdvisor AI" style="height: 60px;">
+      <h2 class="fw-bold text-warning mt-3">LoanAdvisor Chatbot</h2>
+      <p class="lead">Answer a few questions to help us assess your loan eligibility.</p>
+    </div>
+
+    <div class="container">
+      <div class="chat-window d-flex flex-column shadow-sm mb-4" id="chatbox">
+        <!-- Messages will be injected here -->
+      </div>
+
+      <form id="chat-form" class="chat-input d-flex">
+        <input type="text" id="user-input" class="form-control me-2" placeholder="Type your response..." required>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const chatbox = document.getElementById('chatbox');
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('user-input');
+
+    function addMessage(text, sender) {
+      const msg = document.createElement('div');
+      msg.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+      msg.innerText = text;
+      chatbox.appendChild(msg);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userText = input.value;
+      addMessage(userText, 'user');
+      input.value = '';
+
+      const response = await fetch('/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userText })
+      });
+
+      const data = await response.json();
+      addMessage(data.reply, 'bot');
+    });
+
+    // Initial bot prompt
+    window.onload = () => {
+      addMessage("Hi! Let's get started. Please enter your name.", 'bot');
+    };
+  </script>
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="/dashboard">
+        <button style="padding: 10px 20px; background-color: #00bcd4; color: white; border: none; border-radius: 5px; font-size: 16px;">
+            Go to Dashboard
+        </button>
+    </a><br>
+</div>
+</body>
+</html>

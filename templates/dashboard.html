@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | LoanAdvisor AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .dashboard-section {
+      min-height: 100vh;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      padding: 60px 20px;
+      color: white;
+    }
+    .card {
+      background-color: #ffffff;
+      border: none;
+    }
+    .card h4 {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .card i {
+      font-size: 1.2rem;
+    }
+    .text-muted {
+      color: #6c757d !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <img src="/static/logo.png" alt="LoanAdvisor AI" style="height: 60px;border-radius:30px">
+        <h2 class="fw-bold mt-3 text-warning">Welcome to Your Dashboard</h2>
+        <p class="lead">Upload your documents and check your loan eligibility instantly.</p>
+      </div>
+
+      <div class="row text-center mb-5">
+  <div class="col-md-4">
+    <div class="p-3 border rounded bg-dark text-white shadow-sm">
+      <i class="fas fa-comments fa-2x text-info mb-2"></i>
+      <h5 class="mt-2">Step 1: Chat with Smart Advisor</h5>
+      <p class="small">Answer a few questions to help us understand your loan profile.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="p-3 border rounded bg-dark text-white shadow-sm">
+      <i class="fas fa-file-upload fa-2x text-warning mb-2"></i>
+      <h5 class="mt-2">Step 2: Upload Documents</h5>
+      <p class="small">Submit your Aadhar, salary slips, and bank statements securely.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="p-3 border rounded bg-dark text-white shadow-sm">
+      <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+      <h5 class="mt-2">Step 3: View Eligibility & Suggestions</h5>
+      <p class="small">Know your Eligibility Status,Get instant feedback and personalized recommendations.</p>
+    </div>
+  </div>
+</div>
+        <div class="card p-4 shadow-sm mb-4 text-center">
+        <h4><i class="fas fa-comments me-2 text-info"></i>Chat with LoanAdvisor AI</h4>
+        <p>Answer a few questions to help us assess your eligibility.</p>
+        <a href="/chatbot" style="
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 24px;
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+"
+onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 14px rgba(0, 0, 0, 0.4)'"
+onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.3)'">
+  🤖 Start Chatbot
+</a>
+      </div>
+      <div class="card p-4 mb-4" style="
+  background: linear-gradient(to right, #1f1c2c, #928dab);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+">
+  <h4 style="margin-bottom: 20px;">
+    <i class="fas fa-file-upload me-2 text-warning"></i>Upload Documents
+  </h4>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label class="form-label">
+        <i class="fas fa-id-card me-2 text-info"></i>Aadhar Card
+      </label>
+      <input type="file" name="aadhar" class="form-control bg-dark text-white border-light" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">
+        <i class="fas fa-file-invoice-dollar me-2 text-info"></i>3-Month Salary Slip
+      </label>
+      <input type="file" name="salary" class="form-control bg-dark text-white border-light" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">
+        <i class="fas fa-file-alt me-2 text-info"></i>6-Month Bank Statement
+      </label>
+      <input type="file" name="bank" class="form-control bg-dark text-white border-light" required>
+    </div>
+    <button type="submit" class="btn w-100" style="
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      padding: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    "
+    onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 6px 16px rgba(0, 0, 0, 0.4)'"
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.3)'">
+      <i class="fas fa-paper-plane me-2"></i>Submit Documents
+    </button>
+    <div id="uploadResult" style="margin-top: 20px; color: #f8f9fa;"></div>
+  </form>
+</div>
+      <a href="/generate_pdf" style="text-decoration: none;">
+  <center>
+    <button style="
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    "
+    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 14px rgba(0, 0, 0, 0.4)'"
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.3)'">
+      📄 Download Loan Report (PDF)
+    </button>
+  </center>
+</a><br>
+      <div class="card p-4 shadow-sm text-center">
+        <h4><i class="fas fa-check-circle me-2 text-success"></i>Eligibility Status</h4>
+        <p class="text-muted">Your result will appear here after document upload and chatbot interaction.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+function submitDocuments() {
+    const formData = new FormData();
+    formData.append("aadhar", document.getElementById("aadhar").files[0]);
+    formData.append("salary", document.getElementById("salary").files[0]);
+    formData.append("bank", document.getElementById("bank").files[0]);
+
+    fetch("/upload", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        const resultDiv = document.getElementById("uploadResult");
+        if (data.result) {
+            resultDiv.innerHTML = `
+                <strong>Loan Status:</strong> ${data.result}<br><br>
+                <pre style="white-space: pre-wrap; font-family: inherit;">${data.assessment}</pre>
+            `;
+        }
+    });
+}
+</script>
+
+                <div id="uploadResult" style="margin-top: 20px; color: white;"></div>
+</body>
+</html>

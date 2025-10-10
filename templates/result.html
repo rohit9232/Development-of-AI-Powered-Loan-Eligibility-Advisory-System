@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Eligibility Result</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        h2 {
+            color: #00ffcc;
+        }
+        pre {
+            white-space: pre-wrap;
+            font-family: inherit;
+            background-color: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #00ffcc;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #00e6b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Loan Eligibility Result</h2>
+        <p><strong>Status:</strong> {{ result }}</p>
+        <pre>{{ assessment }}</pre>
+        <form action="/generate_pdf">
+            <button class="btn">Download Loan Report (PDF)</button>
+        </form>
+    </div>
+</body>
+</html>
